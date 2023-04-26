@@ -26,7 +26,7 @@ In this challenge we introduce the [_dataSchema_](https://druid.apache.org/docs/
 Let's review what our data looks like.
 
 ```
-head --lines 1 /root/apache-druid-0.21.1/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | jq
+head --lines 1 /root/apache-druid-25.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | jq
 ```
 
 Make mental note of the _time_ field and its format.

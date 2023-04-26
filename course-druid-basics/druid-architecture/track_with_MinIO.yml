@@ -59,14 +59,14 @@ challenges:
     Start by downloading the Druid distribution.
 
     ```
-    wget https://ftp.wayne.edu/apache/druid/0.21.1/apache-druid-0.21.1-bin.tar.gz
+    wget https://dlcdn.apache.org/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
     ```
 
     Unzip the downloaded file and move into the resulting directory.
 
     ```
-    tar -xzf apache-druid-0.21.1-bin.tar.gz
-    cd apache-druid-0.21.1
+    tar -xzf apache-druid-25.0.0-bin.tar.gz
+    cd apache-druid-25.0.0
     ```
 
     Druid uses deep storage - normally something like S3.
@@ -82,7 +82,7 @@ challenges:
     export MINIO_BROWSER_REDIRECT_URL="https://master-server-9001-$INSTRUQT_PARTICIPANT_ID.env.play.instruqt.com"
 
     chmod +x minio
-    nohup /root/apache-druid-0.21.1/minio server --console-address :9001 /root/data > /root/minio-log.out 2> /root/minio-log.err < /dev/null & disown
+    nohup /root/apache-druid-25.0.0/minio server --console-address :9001 /root/data > /root/minio-log.out 2> /root/minio-log.err < /dev/null & disown
     ```
 
     We'll use the MinIO Client (mc) to interact with MinIO.
@@ -99,7 +99,7 @@ challenges:
     The S3 extension uses Jets3t, so we need to create a properties file for this utility.
 
     ```
-    cat > /root/apache-druid-0.21.1/conf/druid/cluster/_common/jets3t.properties << EOF
+    cat > /root/apache-druid-25.0.0/conf/druid/cluster/_common/jets3t.properties << EOF
     s3service.s3-endpoint=master-server
     s3service.s3-endpoint-http-port=9000
     s3service.disable-dns-buckets=true
@@ -118,7 +118,7 @@ challenges:
     Let's review the changes that we will cause by using the quickstart configuration.
 
     ```
-    diff /root/apache-druid-0.21.1/conf/druid/single-server/nano-quickstart/coordinator-overlord/jvm.config conf/druid/cluster/master/coordinator-overlord/jvm.config
+    diff /root/apache-druid-25.0.0/conf/druid/single-server/nano-quickstart/coordinator-overlord/jvm.config conf/druid/cluster/master/coordinator-overlord/jvm.config
     ```
 
     These changes show Java command options that will decrease the memory consumption.
@@ -148,7 +148,7 @@ challenges:
 
     ![Click Master-editor tab](https://raw.githubusercontent.com/shallada/InstruqtImages/main/druid-architecture/ClickMasterEditor.png)
 
-    Open the file: <i>/root/apache-druid-0.21.1/conf/druid/cluster/_common/common.runtime.properties</i>.
+    Open the file: <i>/root/apache-druid-25.0.0/conf/druid/cluster/_common/common.runtime.properties</i>.
 
     ![Common Proper File Path](https://raw.githubusercontent.com/shallada/InstruqtImages/main/druid-architecture/CommonFilePath.png)
 
@@ -222,7 +222,7 @@ challenges:
     We will use _nohup_ here so that the process doesn't die when we move to the next challenge.
 
     ```
-    nohup /root/apache-druid-0.21.1/bin/start-cluster-master-with-zk-server > /root/apache-druid-0.21.1/log.out 2> /root/apache-druid-0.21.1/log.err < /dev/null & disown
+    nohup /root/apache-druid-25.0.0/bin/start-cluster-master-with-zk-server > /root/apache-druid-25.0.0/log.out 2> /root/apache-druid-25.0.0/log.err < /dev/null & disown
     ```
 
     Check that ZooKeeper and the coordinator processes are running (you should see two Java processes near the bottom of the list of processes).
@@ -272,15 +272,15 @@ challenges:
     Download the Druid distibution.
 
     ```
-    wget https://ftp.wayne.edu/apache/druid/0.21.1/apache-druid-0.21.1-bin.tar.gz
+    wget https://ftp.wayne.edu/apache/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
 
     ```
 
     Unzip the downloaded file and move into the resulting directory.
 
     ```
-    tar -xzf apache-druid-0.21.1-bin.tar.gz
-    cd apache-druid-0.21.1
+    tar -xzf apache-druid-25.0.0-bin.tar.gz
+    cd apache-druid-25.0.0
 
     ```
 
@@ -292,22 +292,22 @@ challenges:
     Here are the commands you can use to see what changes we will be making to four different files.
 
     ```
-    diff /root/apache-druid-0.21.1/conf/druid/single-server/nano-quickstart/historical/runtime.properties conf/druid/cluster/data/historical/runtime.properties
+    diff /root/apache-druid-25.0.0/conf/druid/single-server/nano-quickstart/historical/runtime.properties conf/druid/cluster/data/historical/runtime.properties
     ```
 
 
     ```
-    diff /root/apache-druid-0.21.1/conf/druid/single-server/nano-quickstart/historical/jvm.config conf/druid/cluster/data/historical/jvm.config
+    diff /root/apache-druid-25.0.0/conf/druid/single-server/nano-quickstart/historical/jvm.config conf/druid/cluster/data/historical/jvm.config
     ```
 
 
     ```
-    diff /root/apache-druid-0.21.1/conf/druid/single-server/nano-quickstart/middleManager/runtime.properties conf/druid/cluster/data/middleManager/runtime.properties
+    diff /root/apache-druid-25.0.0/conf/druid/single-server/nano-quickstart/middleManager/runtime.properties conf/druid/cluster/data/middleManager/runtime.properties
     ```
 
 
     ```
-    diff /root/apache-druid-0.21.1/conf/druid/single-server/nano-quickstart/middleManager/jvm.config conf/druid/cluster/data/middleManager/jvm.config
+    diff /root/apache-druid-25.0.0/conf/druid/single-server/nano-quickstart/middleManager/jvm.config conf/druid/cluster/data/middleManager/jvm.config
     ```
 
 
@@ -322,14 +322,14 @@ challenges:
     Remember, this file tells the server how to contact ZooKeeper.
 
     ```
-    scp -o StrictHostKeyChecking=no master-server:/root/apache-druid-0.21.1/conf/druid/cluster/_common/common.runtime.properties /root/apache-druid-0.21.1/conf/druid/cluster/_common/common.runtime.properties
+    scp -o StrictHostKeyChecking=no master-server:/root/apache-druid-25.0.0/conf/druid/cluster/_common/common.runtime.properties /root/apache-druid-25.0.0/conf/druid/cluster/_common/common.runtime.properties
     ```
 
     We are set to launch the first data server.
     Again, we'll use _nohup_ so that the processes continue to run when we move to the next challenge.
 
     ```
-    nohup /root/apache-druid-0.21.1/bin/start-cluster-data-server > /root/apache-druid-0.21.1/log.out 2> /root/apache-druid-0.21.1/log.err < /dev/null & disown
+    nohup /root/apache-druid-25.0.0/bin/start-cluster-data-server > /root/apache-druid-25.0.0/log.out 2> /root/apache-druid-25.0.0/log.err < /dev/null & disown
     ```
 
 
@@ -378,14 +378,14 @@ challenges:
     Download the Druid distibution.
 
     ```
-    wget https://ftp.wayne.edu/apache/druid/0.21.1/apache-druid-0.21.1-bin.tar.gz
+    wget https://ftp.wayne.edu/apache/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
     ```
 
     Unzip the downloaded file and move into the resulting directory.
 
     ```
-    tar -xzf apache-druid-0.21.1-bin.tar.gz
-    cd apache-druid-0.21.1
+    tar -xzf apache-druid-25.0.0-bin.tar.gz
+    cd apache-druid-25.0.0
     ```
 
     Let's copy the files to change the configuration like we did with data-server-1.
@@ -398,14 +398,14 @@ challenges:
     Again, let's copy the _common.runtime.properties_ file we edited in the first challenge so that the server knows how to contact ZooKeeper.
 
     ```
-    scp -o StrictHostKeyChecking=no master-server:/root/apache-druid-0.21.1/conf/druid/cluster/_common/common.runtime.properties /root/apache-druid-0.21.1/conf/druid/cluster/_common/common.runtime.properties
+    scp -o StrictHostKeyChecking=no master-server:/root/apache-druid-25.0.0/conf/druid/cluster/_common/common.runtime.properties /root/apache-druid-25.0.0/conf/druid/cluster/_common/common.runtime.properties
     ```
 
     Now, we can launch the second data server.
     Again, we'll use _nohup_ so that the processes continue to run when we move to the next challenge.
 
     ```
-    nohup /root/apache-druid-0.21.1/bin/start-cluster-data-server > /root/apache-druid-0.21.1/log.out 2> /root/apache-druid-0.21.1/log.err < /dev/null & disown
+    nohup /root/apache-druid-25.0.0/bin/start-cluster-data-server > /root/apache-druid-25.0.0/log.out 2> /root/apache-druid-25.0.0/log.err < /dev/null & disown
     ```
 
 
@@ -444,14 +444,14 @@ challenges:
     Download the Druid distibution.
 
     ```
-    wget https://ftp.wayne.edu/apache/druid/0.21.1/apache-druid-0.21.1-bin.tar.gz
+    wget https://ftp.wayne.edu/apache/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
     ```
 
     Unzip the downloaded file and move into the resulting directory.
 
     ```
-    tar -xzf apache-druid-0.21.1-bin.tar.gz
-    cd apache-druid-0.21.1
+    tar -xzf apache-druid-25.0.0-bin.tar.gz
+    cd apache-druid-25.0.0
     ```
 
 
@@ -487,14 +487,14 @@ challenges:
     One last time, let's copy the _common.runtime.properties_ file we edited in the first challenge so that the server knows how to contact ZooKeeper.
 
     ```
-    scp -o StrictHostKeyChecking=no master-server:/root/apache-druid-0.21.1/conf/druid/cluster/_common/common.runtime.properties /root/apache-druid-0.21.1/conf/druid/cluster/_common/common.runtime.properties
+    scp -o StrictHostKeyChecking=no master-server:/root/apache-druid-25.0.0/conf/druid/cluster/_common/common.runtime.properties /root/apache-druid-25.0.0/conf/druid/cluster/_common/common.runtime.properties
     ```
 
     Now, we can launch the query server.
     Again, we'll use _nohup_ so that the processes continue to run when we move to the next challenge.
 
     ```
-    nohup /root/apache-druid-0.21.1/bin/start-cluster-query-server > /root/apache-druid-0.21.1/log.out 2> /root/apache-druid-0.21.1/log.err < /dev/null & disown
+    nohup /root/apache-druid-25.0.0/bin/start-cluster-query-server > /root/apache-druid-25.0.0/log.out 2> /root/apache-druid-25.0.0/log.err < /dev/null & disown
     ```
 
 

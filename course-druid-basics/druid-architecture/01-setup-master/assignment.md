@@ -43,7 +43,7 @@ We need to install the Druid software and configure it on each of the servers.
 In this challenge, we'll deploy the master server and lay the foundation for the other servers.
 
 <details>
-  <summary style="color:cyan">What are the tabs we'll use in this track? Click here to find out.</b></summary>
+  <summary style="color:cyan">What are the tabs we'll use in this track? Click here to find out.</summary>
 <hr style="background-color:cyan">
 We will deploy Druid using four servers.
 In each challenge, as we set up another server, we will add another tab which will give you Bash shell access to the server.
@@ -59,7 +59,7 @@ We will use this editor to edit files on the master server and then copy them as
 Start by downloading the Druid distribution.
 
 ```
-wget https://ftp.wayne.edu/apache/druid/0.21.1/apache-druid-0.21.1-bin.tar.gz
+wget https://dlcdn.apache.org/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
 ```
 
 <h2 style="color:cyan">Step 2</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -67,7 +67,7 @@ wget https://ftp.wayne.edu/apache/druid/0.21.1/apache-druid-0.21.1-bin.tar.gz
 Unzip the downloaded file.
 
 ```
-tar -xzf apache-druid-0.21.1-bin.tar.gz
+tar -xzf apache-druid-25.0.0-bin.tar.gz
 ```
 
 In this challenge, we will be working with servers that are smaller than you would normally use in production.
@@ -83,7 +83,7 @@ To do this, we will use the same configuration files we used in the single serve
 Let's review the changes that we will cause by using the quickstart configuration.
 
 ```
-diff /root/apache-druid-0.21.1/conf/druid/single-server/nano-quickstart/coordinator-overlord/jvm.config /root/apache-druid-0.21.1/conf/druid/cluster/master/coordinator-overlord/jvm.config
+diff /root/apache-druid-25.0.0/conf/druid/single-server/nano-quickstart/coordinator-overlord/jvm.config /root/apache-druid-25.0.0/conf/druid/cluster/master/coordinator-overlord/jvm.config
 ```
 
 These changes show Java command options that will decrease the JVM heap size from 15GB to 256MB.
@@ -93,13 +93,13 @@ These changes show Java command options that will decrease the JVM heap size fro
 Now, let's copy this configuration file into our cluster configuration.
 
 ```
-cp /root/apache-druid-0.21.1/conf/druid/single-server/nano-quickstart/coordinator-overlord/jvm.config /root/apache-druid-0.21.1/conf/druid/cluster/master/coordinator-overlord
+cp /root/apache-druid-25.0.0/conf/druid/single-server/nano-quickstart/coordinator-overlord/jvm.config /root/apache-druid-25.0.0/conf/druid/cluster/master/coordinator-overlord
 ```
 
 We need to configure the servers so that they can discover each other.
 
 <details>
-  <summary style="color:cyan">Want to know how the discovery process works? Click here.</b></summary>
+  <summary style="color:cyan">Want to know how the discovery process works? Click here.</summary>
 <hr style="background-color:cyan">
 <ol>
 <li>On each server, in the common configuration file, we set <i>druid.zk.service.host</i> to tell the server how to contact ZooKeeper</li>
@@ -124,7 +124,7 @@ Click on the _Master-editor_ tab in the top-left corner of this screen.
 
 <h2 style="color:cyan">Step 6</h2><hr style="color:cyan;background-color:cyan;height:2px">
 
-Open the file: <i>/root/apache-druid-0.21.1/conf/druid/cluster/_common/common.runtime.properties</i>.
+Open the file: <i>/root/apache-druid-25.0.0/conf/druid/cluster/_common/common.runtime.properties</i>.
 
 <a href="#img-6">
   <img alt="Common Proper File Path" src="../assets/CommonFilePath.png" />
@@ -188,7 +188,7 @@ Now, we can launch the master server.
 We will use _nohup_ here so that the process doesn't die when we move to the next challenge.
 
 ```
-nohup /root/apache-druid-0.21.1/bin/start-cluster-master-with-zk-server > /root/apache-druid-0.21.1/log.out 2> /root/apache-druid-0.21.1/log.err < /dev/null & disown
+nohup /root/apache-druid-25.0.0/bin/start-cluster-master-with-zk-server > /root/apache-druid-25.0.0/log.out 2> /root/apache-druid-25.0.0/log.err < /dev/null & disown
 ```
 
 <h2 style="color:cyan">Step 11</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -222,13 +222,13 @@ curl master-server:8081/status/properties | jq | grep druid.host
 You can find the log files for these processes here:
 
 ```
-tail /root/apache-druid-0.21.1/var/sv/coordinator-overlord.log
+tail /root/apache-druid-25.0.0/var/sv/coordinator-overlord.log
 ```
 
 and here:
 
 ```
-tail /root/apache-druid-0.21.1/var/sv/zk.log
+tail /root/apache-druid-25.0.0/var/sv/zk.log
 ```
 
 <h2 style="color:cyan">Great! You have deployed the master server.</h2>

@@ -34,7 +34,7 @@ By adding more data servers, we not only increase the amount of storage, but we 
 Download the Druid distribution.
 
 ```
-wget https://ftp.wayne.edu/apache/druid/0.21.1/apache-druid-0.21.1-bin.tar.gz
+wget https://dlcdn.apache.org/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
 ```
 
 <h2 style="color:cyan">Step 2</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -42,7 +42,7 @@ wget https://ftp.wayne.edu/apache/druid/0.21.1/apache-druid-0.21.1-bin.tar.gz
 Unzip the downloaded file.
 
 ```
-tar -xzf apache-druid-0.21.1-bin.tar.gz
+tar -xzf apache-druid-25.0.0-bin.tar.gz
 ```
 
 <h2 style="color:cyan">Step 3</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -50,7 +50,7 @@ tar -xzf apache-druid-0.21.1-bin.tar.gz
 Let's copy the historical files into our cluster configuration.
 
 ```
-cp /root/apache-druid-0.21.1/conf/druid/single-server/nano-quickstart/historical/* /root/apache-druid-0.21.1/conf/druid/cluster/data/historical
+cp /root/apache-druid-25.0.0/conf/druid/single-server/nano-quickstart/historical/* /root/apache-druid-25.0.0/conf/druid/cluster/data/historical
 ```
 
 <h2 style="color:cyan">Step 4</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -58,7 +58,7 @@ cp /root/apache-druid-0.21.1/conf/druid/single-server/nano-quickstart/historical
 Let's also copy the middle manager files into our cluster configuration.
 
 ```
-cp /root/apache-druid-0.21.1/conf/druid/single-server/nano-quickstart/middleManager/* /root/apache-druid-0.21.1/conf/druid/cluster/data/middleManager
+cp /root/apache-druid-25.0.0/conf/druid/single-server/nano-quickstart/middleManager/* /root/apache-druid-25.0.0/conf/druid/cluster/data/middleManager
 ```
 
 <h2 style="color:cyan">Step 5</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -66,7 +66,7 @@ cp /root/apache-druid-0.21.1/conf/druid/single-server/nano-quickstart/middleMana
 Again, let's copy the _common.runtime.properties_ file we edited in the first challenge so that the server knows how to contact ZooKeeper.
 
 ```
-scp -o StrictHostKeyChecking=no master-server:/root/apache-druid-0.21.1/conf/druid/cluster/_common/common.runtime.properties /root/apache-druid-0.21.1/conf/druid/cluster/_common/common.runtime.properties
+scp -o StrictHostKeyChecking=no master-server:/root/apache-druid-25.0.0/conf/druid/cluster/_common/common.runtime.properties /root/apache-druid-25.0.0/conf/druid/cluster/_common/common.runtime.properties
 ```
 
 <h2 style="color:cyan">Step 6</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -75,7 +75,7 @@ Now, we can launch the second data server.
 Again, we'll use _nohup_ so that the processes continue to run when we move to the next challenge.
 
 ```
-nohup /root/apache-druid-0.21.1/bin/start-cluster-data-server > /root/apache-druid-0.21.1/log.out 2> /root/apache-druid-0.21.1/log.err < /dev/null & disown
+nohup /root/apache-druid-25.0.0/bin/start-cluster-data-server > /root/apache-druid-25.0.0/log.out 2> /root/apache-druid-25.0.0/log.err < /dev/null & disown
 ```
 
 <h2 style="color:cyan">Step 7</h2><hr style="color:cyan;background-color:cyan;height:2px">

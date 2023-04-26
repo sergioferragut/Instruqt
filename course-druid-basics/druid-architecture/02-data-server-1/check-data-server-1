@@ -4,10 +4,10 @@ server_count=$(ps -ef | grep "openjdk\-[8-8]" | wc -l)
 if [ $server_count -eq 2 ]
 then
     echo "Data server 1 processes are running"
-elif [ -d "/root/apache-druid-0.21.1"  ]
+elif [ -d "/root/apache-druid-25.0.0"  ]
 then
-    MSG="Although the folder named /root/apache-druid-0.21.1 exists, the data server processes are not running - try using the nohup command to start Druid"
-elif [ -f "/root/apache-druid-0.21.1-bin.tar.gz"  ]
+    MSG="Although the folder named /root/apache-druid-25.0.0 exists, the data server processes are not running - try using the nohup command to start Druid"
+elif [ -f "/root/apache-druid-25.0.0-bin.tar.gz"  ]
 then
     MSG="Although the install file exists, it has not been unzipped and the data server processes are not running - try using the tar command to unzip the install file"
 else

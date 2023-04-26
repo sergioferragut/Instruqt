@@ -25,7 +25,7 @@ Now that the ingestion spec is ready, let's ingest some data!
 Here's the command to submit the ingestion spec to Druid.
 
 ```
-/root/apache-druid-0.21.1/bin/post-index-task \
+/root/apache-druid-25.0.0/bin/post-index-task \
   --file /root/ingestion-spec.json \
   --url http://localhost:8081
 ```
@@ -57,7 +57,7 @@ This field tells you how many total rows are in the wikipedia table.
 Compare the number of rows in the table to the number of rows in the input file.
 
 ```
-wc -l /root/apache-druid-0.21.1/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
+wc -l /root/apache-druid-25.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
 ```
 
 <details>
@@ -78,7 +78,7 @@ To investigate this further, look at these records from the input file that are 
 
 ```
 grep Diannaa \
-  /root/apache-druid-0.21.1/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | \
+  /root/apache-druid-25.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | \
   grep "2015-09-12T20:" | \
   jq '"****************","user: "+.user,"added: "+(.added|tostring),"deleted: "+(.deleted|tostring),"delta: "+(.delta|tostring)'
 ```
@@ -109,13 +109,13 @@ curl -X 'POST' \
 <details>
   <summary style="color:cyan"><b>Want to understand this output? Click here.</b></summary>
 <hr style="background-color:cyan">
-The <i>curl<i> command issues a query to the Druid <i>wikipedia</i> table.
+The <i>curl</i> command issues a query to the Druid <i>wikipedia</i> table.
 What you see is one JSON record that is the result of the query.
 This is interesting, because we ingested two records, but we only have one in the table.
 But if you inspect the one record, you see that its values are a rollup of the two raw records.
 <br><br>
 Note that the record contains the same user field, and the aggregated added, deleted and delta fields, as well as a record sum field, which tells how many records were rolled up into this row.
-<hr style="background-color:cyan">
+<hr style="background-color:cyan"/>
 </details>
 
 

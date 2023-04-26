@@ -33,7 +33,7 @@ ps -ef | grep "Main server [A-Za-z]*$" | awk 'NF{print $NF}'
 Take a look at the format of the raw data we want to ingest.
 
 ```
-head --lines 1 /root/apache-druid-0.21.1/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | jq
+head --lines 1 /root/apache-druid-25.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | jq
 ```
 
 <h2 style="color:cyan">Step 3</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -42,7 +42,7 @@ The previous command only shows the first line of the file.
 Do you want to know how many lines there are in the file?
 
 ```
-wc -l /root/apache-druid-0.21.1/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
+wc -l /root/apache-druid-25.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
 ```
 
 Let's build the ingestion spec.
@@ -142,7 +142,7 @@ Replace the empty _ioConfig_ section in the spec with the following.
     "type" : "index_parallel",
     "inputSource" : {
       "type" : "local",
-      "baseDir" : "/root/apache-druid-0.21.1/quickstart/tutorial/",
+      "baseDir" : "/root/apache-druid-25.0.0/quickstart/tutorial/",
       "filter" : "wikiticker-2015-09-12-sampled.json"
     },
     "inputFormat" :  {
