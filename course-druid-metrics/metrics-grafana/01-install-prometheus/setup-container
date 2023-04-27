@@ -7,14 +7,14 @@ then
   while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -eq 0 ]; do sleep 1; done
 fi
 # remove the installation (if it exists) so we can start fresh
-rm -rf /root/apache-druid-24.0.0/
+rm -rf /root/apache-druid-24.0.2/
 # Make sure we have the tar file
-if [ ! -f /root/apache-druid-24.0.0-bin.tar.gz ]
+if [ ! -f /root/apache-druid-24.0.2-bin.tar.gz ]
 then
-  wget https://ftp.wayne.edu/apache/druid/24.0.0/apache-druid-24.0.0-bin.tar.gz
+  wget https://dlcdn.apache.org/druid/24.0.2/apache-druid-24.0.2-bin.tar.gz
 fi
-tar -xzf apache-druid-24.0.0-bin.tar.gz
-#nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
+tar -xzf apache-druid-24.0.2-bin.tar.gz
+#nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
 
 # Install the tools for this lab
 apt-get update
@@ -114,11 +114,11 @@ fi
 # Create a shell script to gather metrics
 cat > /root/gather_metrics.com << \EOF
 #!/bin/bash
-{ tail -f apache-druid-24.0.0/log/coordinator-overlord.log & \
-  tail -f apache-druid-24.0.0/log/broker.log & \
-  tail -f apache-druid-24.0.0/log/historical.log & \
-  tail -f apache-druid-24.0.0/log/middleManager.log & \
-  tail -f apache-druid-24.0.0/log/router.log; } \
+{ tail -f apache-druid-24.0.2/log/coordinator-overlord.log & \
+  tail -f apache-druid-24.0.2/log/broker.log & \
+  tail -f apache-druid-24.0.2/log/historical.log & \
+  tail -f apache-druid-24.0.2/log/middleManager.log & \
+  tail -f apache-druid-24.0.2/log/router.log; } \
   | grep 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' \
   | awk 'BEGIN {FS = " - "} ; {print $2}' \
   | jq -c 'select(has("type") | not) | select(.feed == "metrics") | {timestamp, service, metric, value}'

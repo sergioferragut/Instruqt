@@ -41,14 +41,14 @@ Read more about this command <a href="https://druid.apache.org/docs/latest/devel
 
 
 ```
-pushd /root/apache-druid-24.0.0
+pushd /root/apache-druid-24.0.2
 java \
   -cp "lib/*" \
   -Ddruid.extensions.directory="extensions" \
   -Ddruid.extensions.hadoopDependenciesDir="hadoop-dependencies" \
   org.apache.druid.cli.Main tools pull-deps \
   --no-default-hadoop \
-  -c "org.apache.druid.extensions.contrib:prometheus-emitter:24.0.0"
+  -c "org.apache.druid.extensions.contrib:prometheus-emitter:24.0.2"
 popd
 ```
 
@@ -58,9 +58,9 @@ Configure all the Druid processes to use the Prometheus emitter by modifying the
 
 ```
 sed -i 's/druid.extensions.loadList=\[/druid.extensions.loadList=\["prometheus-emitter", /g' \
-  /root/apache-druid-24.0.0/conf/druid/single-server/nano-quickstart/_common/common.runtime.properties
+  /root/apache-druid-24.0.2/conf/druid/single-server/nano-quickstart/_common/common.runtime.properties
 sed -i 's/noop/prometheus/g' \
-  /root/apache-druid-24.0.0/conf/druid/single-server/nano-quickstart/_common/common.runtime.properties
+  /root/apache-druid-24.0.2/conf/druid/single-server/nano-quickstart/_common/common.runtime.properties
 ```
 
 <h2 style="color:cyan">Step 3</h2><hr style="color:cyan;background-color:cyan;height:5px">
@@ -71,15 +71,15 @@ So we can use a simple _echo >>_ command here to append the necessary configurat
 
 ```
 echo 'druid.emitter.prometheus.port=9091' \
-  >> /root/apache-druid-24.0.0/conf/druid/single-server/nano-quickstart/broker/runtime.properties
+  >> /root/apache-druid-24.0.2/conf/druid/single-server/nano-quickstart/broker/runtime.properties
 echo 'druid.emitter.prometheus.port=9092' \
-  >> /root/apache-druid-24.0.0/conf/druid/single-server/nano-quickstart/coordinator-overlord/runtime.properties
+  >> /root/apache-druid-24.0.2/conf/druid/single-server/nano-quickstart/coordinator-overlord/runtime.properties
 echo 'druid.emitter.prometheus.port=9093' \
-  >> /root/apache-druid-24.0.0/conf/druid/single-server/nano-quickstart/historical/runtime.properties
+  >> /root/apache-druid-24.0.2/conf/druid/single-server/nano-quickstart/historical/runtime.properties
 echo 'druid.emitter.prometheus.port=9094' \
-  >> /root/apache-druid-24.0.0/conf/druid/single-server/nano-quickstart/middleManager/runtime.properties
+  >> /root/apache-druid-24.0.2/conf/druid/single-server/nano-quickstart/middleManager/runtime.properties
 echo 'druid.emitter.prometheus.port=9095' \
-  >> /root/apache-druid-24.0.0/conf/druid/single-server/nano-quickstart/router/runtime.properties
+  >> /root/apache-druid-24.0.2/conf/druid/single-server/nano-quickstart/router/runtime.properties
 ```
 
 <h2 style="color:cyan">Step 4</h2><hr style="color:cyan;background-color:cyan;height:5px">
@@ -87,7 +87,7 @@ echo 'druid.emitter.prometheus.port=9095' \
 Start Druid and wait for it to initialize.
 
 ```
-nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart \
+nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart \
   > /root/log.out 2> /root/log.err \
   < /dev/null & disown
 while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -gt 0 ]

@@ -34,7 +34,7 @@ Druid is not running yet.
 Verify that the log directory does not yet exist.
 
 ```
-tree -L 1 /root/apache-druid-24.0.0
+tree -L 1 /root/apache-druid-24.0.2
 ```
 
 <h2 style="color:cyan">Step 2</h2><hr style="color:cyan;background-color:cyan;height:5px">
@@ -214,7 +214,7 @@ Save the Overlord configuration file.
 Back in the _Shell_ tab, start Druid.
 
 ```
-nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart \
+nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart \
   > /root/log.out 2> /root/log.err \
   < /dev/null & disown
 ```
@@ -225,7 +225,7 @@ Monitor the Coordinator-Overlord logs to see Druid create different versions of 
 Run the following commands several times during a couple of minutes to see what happens.
 
 ```
-ls -al /root/apache-druid-24.0.0/log/coordinator-overlord.*
+ls -al /root/apache-druid-24.0.2/log/coordinator-overlord.*
 ```
 
 <details>

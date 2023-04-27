@@ -9,16 +9,16 @@ then
 fi
 # remove the installation (if it exists) so we can start fresh
 echo "Removing old Druid"
-rm -rf /root/apache-druid-24.0.0/
+rm -rf /root/apache-druid-24.0.2/
 # Make sure we have the tar file
-if [ ! -f /root/apache-druid-24.0.0-bin.tar.gz ]
+if [ ! -f /root/apache-druid-24.0.2-bin.tar.gz ]
 then
   echo "downloading Druid"
-  wget https://ftp.wayne.edu/apache/druid/24.0.0/apache-druid-24.0.0-bin.tar.gz
+  wget https://dlcdn.apache.org/druid/24.0.2/apache-druid-24.0.2-bin.tar.gz
 fi
 echo "launching Druid"
-tar -xzf apache-druid-24.0.0-bin.tar.gz
-nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
+tar -xzf apache-druid-24.0.2-bin.tar.gz
+nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
 
 # Install the tools for this lab
 apt-get update

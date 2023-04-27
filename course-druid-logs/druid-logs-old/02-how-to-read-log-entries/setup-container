@@ -3,13 +3,13 @@
 # Start with a fresh install
 if [ $(ps -ef | grep 'perl /root' | wc -l) -lt 2 ]
 then
-  rm -rf /root/apache-druid-24.0.0/
-  if [ ! -f /root/apache-druid-24.0.0-bin.tar.gz ]
+  rm -rf /root/apache-druid-24.0.2/
+  if [ ! -f /root/apache-druid-24.0.2-bin.tar.gz ]
   then
-    wget https://ftp.wayne.edu/apache/druid/24.0.0/apache-druid-24.0.0-bin.tar.gz
+    wget https://dlcdn.apache.org/druid/24.0.2/apache-druid-24.0.2-bin.tar.gz
   fi
-  tar -xzf apache-druid-24.0.0-bin.tar.gz
-  nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
+  tar -xzf apache-druid-24.0.2-bin.tar.gz
+  nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
 
   # Install the tools for this lab
   apt-get update

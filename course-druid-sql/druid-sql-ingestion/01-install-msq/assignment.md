@@ -30,7 +30,7 @@ SQL Ingestion became available in Druid with the 24.0 release.
 Use the following command to get the Druid 25.0 release.
 
 ```
-wget https://ftp.wayne.edu/apache/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
+wget https://dlcdn.apache.org/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
 tar -xzf apache-druid-25.0.0-bin.tar.gz
 ```
 

@@ -25,7 +25,7 @@ That's all there is to it! Enjoy!
 <hr style="background-color:cyan">
 </details>
 
-Here's what the [official website](https://druid.apache.org/docs/0.21.1/tutorials/index.html#requirements) says we need in order to run Druid.
+Here's what the [official website](https://druid.apache.org/docs/24.0.2/tutorials/index.html#requirements) says we need in order to run Druid.
 
 TL;DR we need an environment with Java 8 installed (including the JAVA_HOME environment variable).
 Let's verify our environment is ready to go.
@@ -48,11 +48,11 @@ echo $JAVA_HOME
 
 <h2 style="color:cyan">Step 3</h2><hr style="color:cyan;background-color:cyan;height:2px">
 
-Download Druid (here's a [list of mirror sites](https://www.apache.org/dyn/closer.cgi?path=/druid/0.21.1/apache-druid-0.21.1-bin.tar.gz) if you want to find one close to your location).
+Download Druid (here's a [list of mirror sites](https://www.apache.org/dyn/closer.cgi?path=/druid/24.0.2/apache-druid-24.0.2-bin.tar.gz) if you want to find one close to your location).
 Depending on the download speed, this may take a few minutes.
 
 ```
-wget https://ftp.wayne.edu/apache/druid/0.21.1/apache-druid-0.21.1-bin.tar.gz
+wget https://dlcdn.apache.org/druid/24.0.2/apache-druid-24.0.2-bin.tar.gz
 ```
 
 <h2 style="color:cyan">Step 4</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -60,7 +60,7 @@ wget https://ftp.wayne.edu/apache/druid/0.21.1/apache-druid-0.21.1-bin.tar.gz
 Unzip the downloaded file.
 
 ```
-tar -xzf apache-druid-0.21.1-bin.tar.gz
+tar -xzf apache-druid-24.0.2-bin.tar.gz
 ```
 
 <h2 style="color:cyan">Step 5</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -72,13 +72,13 @@ We'll start Druid with _nohup_ so that the Druid processes persist between Instr
 <hr style="background-color:cyan">
 Don't let the <code>nohup</code> command scare you.
 At its core, here's the real command to start Druid.
-<code>/root/apache-druid-0.21.1/bin/start-nano-quickstart</code>
+<code>/root/apache-druid-24.0.2/bin/start-nano-quickstart</code>
 All the other trimmings are just to allow the Druid processes to continue running when we move to the next lab.
 <hr style="background-color:cyan">
 </details>
 
 ```
-nohup /root/apache-druid-0.21.1/bin/start-nano-quickstart > /root/apache-druid-0.21.1/log.out 2> /root/apache-druid-0.21.1/log.err < /dev/null & disown
+nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart > /root/apache-druid-24.0.2/log.out 2> /root/apache-druid-24.0.2/log.err < /dev/null & disown
 ```
 
 <h2 style="color:cyan">Step 6</h2><hr style="color:cyan;background-color:cyan;height:2px">

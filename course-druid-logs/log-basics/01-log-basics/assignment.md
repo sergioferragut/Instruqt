@@ -96,7 +96,7 @@ For now, let's just become familiar with the different types of Druid log files.
 Using the information from the launch script output, we can see the various process logs using the following command.
 
 ```
-tree /root/apache-druid-24.0.0/log
+tree /root/apache-druid-24.0.2/log
 ```
 
 Note that we see two files for each Druid process (including zookeeper):
@@ -108,7 +108,7 @@ Note that we see two files for each Druid process (including zookeeper):
 Let's start by looking at the _stdout_ file for the broker process.
 
 ```
-cat /root/apache-druid-24.0.0/log/broker.stdout.log
+cat /root/apache-druid-24.0.2/log/broker.stdout.log
 ```
 
 This file contains a line indicating the location of the other log file.
@@ -121,11 +121,11 @@ Therefore, the two dots effectively "cancel out" the previously specified direct
 <br><br>
 So, instead of:
 <br>
-<code>/root/apache-druid-24.0.0/bin/../log/broker.log</code>
+<code>/root/apache-druid-24.0.2/bin/../log/broker.log</code>
 <br>
 a more concise path for the log file is:
 <br>
-<code>/root/apache-druid-24.0.0/log/broker.log</code>
+<code>/root/apache-druid-24.0.2/log/broker.log</code>
 <hr style="background-color:cyan">
 </details>
 
@@ -157,7 +157,7 @@ The <i>-f</i> option causes the command to continue to listen and output additio
 </details>
 
 ```
-tail -f /root/apache-druid-24.0.0/log/middleManager.log
+tail -f /root/apache-druid-24.0.2/log/middleManager.log
 ```
 
 Leave the _tail_ command running in this tab.
@@ -309,7 +309,7 @@ Here's a command to enable query logging  (run this command in the _Shell_ tab).
 
 ```
 sed -i 's/druid.startup.logging.logProperties=true/druid.startup.logging.logProperties=true\ndruid.request.logging.type=slf4j/' \
-  /root/apache-druid-24.0.0/conf/druid/single-server/nano-quickstart/_common/common.runtime.properties
+  /root/apache-druid-24.0.2/conf/druid/single-server/nano-quickstart/_common/common.runtime.properties
 ```
 
 <details>
@@ -335,7 +335,7 @@ Restart the cluster so the configuration change will take effect (run this comma
 ```
 kill $(ps -ef | grep 'perl /root' | awk 'NF{print $2}' | head -n 1)
 while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -eq 0 ]; do echo "Waiting for cluster to terminate..."; sleep 3; done
-nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
+nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
 while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -gt 0 ]; do echo "Waiting for cluster to initialize..."; sleep 3; done; sleep 5
 ```
 
@@ -355,7 +355,7 @@ curl -s -X 'POST' \
 We can find the query logging at the end of the Broker log (run this command in the _Shell_ tab).
 
 ```
-tail /root/apache-druid-24.0.0/log/broker.log -n 1
+tail /root/apache-druid-24.0.2/log/broker.log -n 1
 ```
 
 We see the query of the wikipedia table in the log indicating what the query was.

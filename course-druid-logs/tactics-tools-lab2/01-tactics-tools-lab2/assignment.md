@@ -59,7 +59,7 @@ Since this is an ingestion problem, let's begin by looking at the middle manager
 
 
 ```
-less /root/apache-druid-24.0.0/log/middleManager.log
+less /root/apache-druid-24.0.2/log/middleManager.log
 ```
 
 <h2 style="color:cyan">Step 3</h2><hr style="color:cyan;background-color:cyan;height:5px">
@@ -119,7 +119,7 @@ Type _q_ to exit _less_.
 Since the timestamp is the first field in the records, we can strip the first field and pipe the result into _less_ for inspection.
 
 ```
-jq .time /root/apache-druid-24.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | less
+jq .time /root/apache-druid-24.0.2/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | less
 ```
 
 It may be a bit tedious, but let's look at the timestamps.
@@ -136,7 +136,7 @@ Let's fix the format of that timestamp.
 We'll use _sed_ because the file is quite large and _sed_ will be able to handle a large file.
 
 ```
-sed -i 's/12-09-2015T00:47:00.496Z/2015-09-12T00:47:00.496Z/g' /root/apache-druid-24.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
+sed -i 's/12-09-2015T00:47:00.496Z/2015-09-12T00:47:00.496Z/g' /root/apache-druid-24.0.2/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
 ```
 
 <h2 style="color:cyan">Step 12</h2><hr style="color:cyan;background-color:cyan;height:5px">
@@ -144,7 +144,7 @@ sed -i 's/12-09-2015T00:47:00.496Z/2015-09-12T00:47:00.496Z/g' /root/apache-drui
 Check out the first two lines of the file to see that we changed the timestamp as we intended.
 
 ```
-head -n 2 /root/apache-druid-24.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
+head -n 2 /root/apache-druid-24.0.2/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
 ```
 
 <h2 style="color:cyan">Step 13</h2><hr style="color:cyan;background-color:cyan;height:5px">

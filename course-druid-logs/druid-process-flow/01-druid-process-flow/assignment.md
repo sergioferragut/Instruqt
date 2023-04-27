@@ -49,9 +49,9 @@ Also, when <i>multitail</i> is running, you can type <i>h</i> to see a list of i
 
 ```
 multitail \
-  -p l -f /root/apache-druid-24.0.0/log/coordinator-overlord.log \
-  -p l -f /root/apache-druid-24.0.0/log/middleManager.log \
-  -p l -f /root/apache-druid-24.0.0/log/historical.log
+  -p l -f /root/apache-druid-24.0.2/log/coordinator-overlord.log \
+  -p l -f /root/apache-druid-24.0.2/log/middleManager.log \
+  -p l -f /root/apache-druid-24.0.2/log/historical.log
 ```
 
 Now that we can see the logs, we'll start an ingestion in the _Ingestion Shell_ tab, and watch what happens to the logs.
@@ -126,8 +126,8 @@ Next, let's launch _multitail_ on the two query log files (broker and historical
 
 ```
 multitail \
-  -p l -f /root/apache-druid-24.0.0/log/broker.log \
-  -p l -f /root/apache-druid-24.0.0/log/historical.log
+  -p l -f /root/apache-druid-24.0.2/log/broker.log \
+  -p l -f /root/apache-druid-24.0.2/log/historical.log
 ```
 
 <h2 style="color:cyan">Step 9</h2><hr style="color:cyan;background-color:cyan;height:5px">

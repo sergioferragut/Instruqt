@@ -7,13 +7,13 @@ then
   while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -eq 0 ]; do sleep 1; done
 fi
 # remove the installation (if it exists) so we can start fresh
-rm -rf /root/apache-druid-24.0.0/
+rm -rf /root/apache-druid-24.0.2/
 # Make sure we have the tar file
-if [ ! -f /root/apache-druid-24.0.0-bin.tar.gz ]
+if [ ! -f /root/apache-druid-24.0.2-bin.tar.gz ]
 then
-  wget https://ftp.wayne.edu/apache/druid/24.0.0/apache-druid-24.0.0-bin.tar.gz
+  wget https://dlcdn.apache.org/druid/24.0.2/apache-druid-24.0.2-bin.tar.gz
 fi
-tar -xzf apache-druid-24.0.0-bin.tar.gz
+tar -xzf apache-druid-24.0.2-bin.tar.gz
 
 # Install the tools for this lab
 apt-get update
@@ -44,7 +44,7 @@ fi
 
 
 # Install MinIO
-if [ ! -f /root/apache-druid-24.0.0/minio ]
+if [ ! -f /root/apache-druid-24.0.2/minio ]
 then
   wget https://dl.minio.io/server/minio/release/linux-amd64/minio
   chmod +x minio
@@ -74,7 +74,7 @@ then
 fi
 
 
-cat > /root/apache-druid-24.0.0/conf/druid/single-server/nano-quickstart/_common/common.runtime.properties << \EOF
+cat > /root/apache-druid-24.0.2/conf/druid/single-server/nano-quickstart/_common/common.runtime.properties << \EOF
 #
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file

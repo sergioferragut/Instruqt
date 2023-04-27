@@ -86,7 +86,7 @@ Save the file.
 Let's start Druid and wait for Druid to initialize using the following commands in the _Shell_ tab.
 
 ```
-nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart \
+nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart \
   > /root/log.out 2> /root/log.err \
   < /dev/null & disown
 while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -gt 0 ]
@@ -103,7 +103,7 @@ Let's wait for Druid to emit some metrics.
 Remember, By default Druid emits metrics every minute.
 
 ```
-while [ $(grep -C 2 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.0/log/broker.log | wc -l) -eq 0 ]
+while [ $(grep -C 2 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.2/log/broker.log | wc -l) -eq 0 ]
 do
   echo "Waiting for Druid to emit metrics..."
   sleep 5
@@ -115,7 +115,7 @@ done
 We can investigate the Broker's metrics in table format by using the following command.
 
 ```
-grep 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.0/log/broker.log \
+grep 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.2/log/broker.log \
   | awk 'BEGIN {FS = " - "} ; {print $2}' \
   | jq 'select(has("type") | not) | select(.feed == "metrics") | "\(.timestamp) \(.metric) \(.value)"' \
   | awk '{printf "%17.17s - %-30s %s\n", $1, $2, $3}'
@@ -166,7 +166,7 @@ Look again to see the query metrics.
 ```
 echo "Waiting one minute to ensure that Druid emits the query metrics..."
 sleep 60
-grep 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.0/log/broker.log \
+grep 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.2/log/broker.log \
   | awk 'BEGIN {FS = " - "} ; {print $2}' \
   | jq 'select(has("type") | not) | select(.feed == "metrics") | "\(.timestamp) \(.metric) \(.value)"' \
   | awk '{printf "%17.17s - %-30s %s\n", $1, $2, $3}'
@@ -235,7 +235,7 @@ Restart the cluster so the configuration change will take effect (run this comma
 ```
 kill $(ps -ef | grep 'perl /root' | awk 'NF{print $2}' | head -n 1)
 while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -eq 0 ]; do echo "Waiting for cluster to terminate..."; sleep 3; done
-nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
+nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
 while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -gt 0 ]; do echo "Waiting for cluster to initialize..."; sleep 3; done; sleep 5
 ```
 
@@ -246,7 +246,7 @@ Finally, wait a minute (for the Broker to emit metrics) and then let's look at t
 
 ```
 sleep 60
-grep 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.0/log/broker.log \
+grep 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.2/log/broker.log \
   | awk 'BEGIN {FS = " - "} ; {print $2}' \
   | jq 'select(has("type") | not) | select(.feed == "metrics") | "\(.timestamp) \(.metric) \(.value)"' \
   | awk '{printf "%17.17s - %-30s %s\n", $1, $2, $3}'

@@ -74,7 +74,7 @@ What should we do to determine the cause of the failure?
 Since we know that ingestion starts with the middle manager process, let's peruse the middle manager's log file.
 
 ```
-less /root/apache-druid-24.0.0/log/middleManager.log
+less /root/apache-druid-24.0.2/log/middleManager.log
 ```
 
 <h2 style="color:cyan">Step 3</h2><hr style="color:cyan;background-color:cyan;height:5px">

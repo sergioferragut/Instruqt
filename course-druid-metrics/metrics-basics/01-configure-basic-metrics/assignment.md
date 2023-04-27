@@ -85,7 +85,7 @@ Save the file.
 Back in the _Shell_ tab, use the following commands to launch Druid and wait for Druid to initialize.
 
 ```
-nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart \
+nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart \
   > /root/log.out 2> /root/log.err \
   < /dev/null & disown
 while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -gt 0 ]
@@ -104,7 +104,7 @@ So if we look in the logs now, we will not see metrics yet.
 Let's wait for Druid to emit some metrics.
 
 ```
-while [ $(grep -C 2 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.0/log/broker.log | wc -l) -eq 0 ]
+while [ $(grep -C 2 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.2/log/broker.log | wc -l) -eq 0 ]
 do
   echo "Waiting for Druid to emit metrics..."
   sleep 5
@@ -117,7 +117,7 @@ Druid emits the metrics into the processes' log files.
 The following commands show us an example of metrics in the context of the log file.
 
 ```
-grep -C 2 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.0/log/broker.log \
+grep -C 2 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.2/log/broker.log \
   | head -n 5
 ```
 
@@ -142,7 +142,7 @@ So, we extract the JSON portion of the log message, which focuses on the metrics
 </details>
 
 ```
-grep 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.0/log/broker.log \
+grep 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.2/log/broker.log \
   | head -n 1 \
   | awk 'BEGIN {FS = " - "} ; {print $2}' \
   | jq 'select(has("type") | not) | select(.feed == "metrics")'
@@ -155,7 +155,7 @@ Let’s use a similar command line filter to extract all the metrics from the lo
 We can extract the timestamps, the metric names, and associated values for all metrics (in tabular format) using the following commands.
 
 ```
-grep 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.0/log/broker.log \
+grep 'org.apache.druid.java.util.emitter.core.LoggingEmitter - [{]' apache-druid-24.0.2/log/broker.log \
   | awk 'BEGIN {FS = " - "} ; {print $2}' \
   | jq 'select(has("type") | not) | select(.feed == "metrics") | "\(.timestamp) \(.metric) \(.value)"' \
   | awk '{printf "%17.17s - %-30s %s\n", $1, $2, $3}'

@@ -14,7 +14,7 @@ rm -rf /root/apache-druid-25.0.0/
 if [ ! -f /root/apache-druid-25.0.0-bin.tar.gz ]
 then
   echo "downloading Druid"
-  wget https://ftp.wayne.edu/apache/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
+  wget https://dlcdn.apache.org/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
 fi
 echo "launching Druid"
 tar -xzf apache-druid-25.0.0-bin.tar.gz

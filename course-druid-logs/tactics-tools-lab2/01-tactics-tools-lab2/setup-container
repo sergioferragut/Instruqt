@@ -7,14 +7,14 @@ then
   while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -eq 0 ]; do sleep 1; done
 fi
 # remove the installation (if it exists) so we can start fresh
-rm -rf /root/apache-druid-24.0.0/
+rm -rf /root/apache-druid-24.0.2/
 # Make sure we have the tar file
-if [ ! -f /root/apache-druid-24.0.0-bin.tar.gz ]
+if [ ! -f /root/apache-druid-24.0.2-bin.tar.gz ]
 then
-  wget https://ftp.wayne.edu/apache/druid/24.0.0/apache-druid-24.0.0-bin.tar.gz
+  wget https://dlcdn.apache.org/druid/24.0.2/apache-druid-24.0.2-bin.tar.gz
 fi
-tar -xzf apache-druid-24.0.0-bin.tar.gz
-nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
+tar -xzf apache-druid-24.0.2-bin.tar.gz
+nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
 
 # Install the tools for this lab
 apt-get update
@@ -117,15 +117,15 @@ then
 fi
 
 # Decompress the wiki data
-gunzip /root/apache-druid-24.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json.gz
+gunzip /root/apache-druid-24.0.2/quickstart/tutorial/wikiticker-2015-09-12-sampled.json.gz
 
 # Corrupt a date field
-sed -i 's/2015-09-12T00:47:00.496Z/12-09-2015T00:47:00.496Z/g' /root/apache-druid-24.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
+sed -i 's/2015-09-12T00:47:00.496Z/12-09-2015T00:47:00.496Z/g' /root/apache-druid-24.0.2/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
 
 # Create the ingestion spec
 cat > /root/local_ingestion.json << \EOF
 {
-    "query":"INSERT INTO \"wikiticker\" WITH ext AS (SELECT * FROM TABLE(EXTERN('{\"type\":\"local\",\"baseDir\":\"/root/apache-druid-24.0.0/quickstart/tutorial\",\"filter\":\"wikiticker-2015-09-12-sampled.json\"}','{\"type\":\"json\"}','[{\"name\":\"time\",\"type\":\"string\"},{\"name\":\"channel\",\"type\":\"string\"},{\"name\":\"cityName\",\"type\":\"string\"},{\"name\":\"comment\",\"type\":\"string\"},{\"name\":\"countryIsoCode\",\"type\":\"string\"},{\"name\":\"countryName\",\"type\":\"string\"},{\"name\":\"isAnonymous\",\"type\":\"string\"},{\"name\":\"isMinor\",\"type\":\"string\"},{\"name\":\"isNew\",\"type\":\"string\"},{\"name\":\"isRobot\",\"type\":\"string\"},{\"name\":\"isUnpatrolled\",\"type\":\"string\"},{\"name\":\"metroCode\",\"type\":\"long\"},{\"name\":\"namespace\",\"type\":\"string\"},{\"name\":\"page\",\"type\":\"string\"},{\"name\":\"regionIsoCode\",\"type\":\"string\"},{\"name\":\"regionName\",\"type\":\"string\"},{\"name\":\"user\",\"type\":\"string\"},{\"name\":\"delta\",\"type\":\"long\"},{\"name\":\"added\",\"type\":\"long\"},{\"name\":\"deleted\",\"type\":\"long\"}]'   ) )) SELECT   TIME_PARSE(\"time\") AS __time,   channel,   cityName,   comment,   countryIsoCode, countryName,   isAnonymous,   isMinor,   isNew,   isRobot,   isUnpatrolled,   metroCode,   namespace,   page,   regionIsoCode,   regionName,   user,   delta,   added,   deleted FROM ext PARTITIONED BY DAY"
+    "query":"INSERT INTO \"wikiticker\" WITH ext AS (SELECT * FROM TABLE(EXTERN('{\"type\":\"local\",\"baseDir\":\"/root/apache-druid-24.0.2/quickstart/tutorial\",\"filter\":\"wikiticker-2015-09-12-sampled.json\"}','{\"type\":\"json\"}','[{\"name\":\"time\",\"type\":\"string\"},{\"name\":\"channel\",\"type\":\"string\"},{\"name\":\"cityName\",\"type\":\"string\"},{\"name\":\"comment\",\"type\":\"string\"},{\"name\":\"countryIsoCode\",\"type\":\"string\"},{\"name\":\"countryName\",\"type\":\"string\"},{\"name\":\"isAnonymous\",\"type\":\"string\"},{\"name\":\"isMinor\",\"type\":\"string\"},{\"name\":\"isNew\",\"type\":\"string\"},{\"name\":\"isRobot\",\"type\":\"string\"},{\"name\":\"isUnpatrolled\",\"type\":\"string\"},{\"name\":\"metroCode\",\"type\":\"long\"},{\"name\":\"namespace\",\"type\":\"string\"},{\"name\":\"page\",\"type\":\"string\"},{\"name\":\"regionIsoCode\",\"type\":\"string\"},{\"name\":\"regionName\",\"type\":\"string\"},{\"name\":\"user\",\"type\":\"string\"},{\"name\":\"delta\",\"type\":\"long\"},{\"name\":\"added\",\"type\":\"long\"},{\"name\":\"deleted\",\"type\":\"long\"}]'   ) )) SELECT   TIME_PARSE(\"time\") AS __time,   channel,   cityName,   comment,   countryIsoCode, countryName,   isAnonymous,   isMinor,   isNew,   isRobot,   isUnpatrolled,   metroCode,   namespace,   page,   regionIsoCode,   regionName,   user,   delta,   added,   deleted FROM ext PARTITIONED BY DAY"
 }
 EOF
 

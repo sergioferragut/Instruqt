@@ -31,7 +31,7 @@ Let's investigate the messages in detail so we can understand them.
 Let's start by looking at the most recent message from the Coordinator-Overlord's log file.
 
 ```
-tail -n 1 /root/apache-druid-24.0.0/log/coordinator-overlord.log
+tail -n 1 /root/apache-druid-24.0.2/log/coordinator-overlord.log
 ```
 
 In this message we see fields indicating the following:
@@ -209,7 +209,7 @@ Back in the _Shell_ tab, bounce the Druid cluster to cause the changes to take e
 ```
 kill $(ps -ef | grep 'perl /root' | awk 'NF{print $2}' | head -n 1)
 while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -eq 0 ]; do echo "Waiting for cluster to terminate..."; sleep 3; done
-nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
+nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart > /root/log.out 2> /root/log.err < /dev/null & disown
 while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -gt 0 ]; do echo "Waiting for cluster to initialize..."; sleep 3; done
 ```
 
@@ -218,7 +218,7 @@ while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -gt 0 ]; do 
 Now, look for _DEBUG_ log messages in the Coordinator-Overlord log file.
 
 ```
-cat /root/apache-druid-24.0.0/log/coordinator-overlord.log \
+cat /root/apache-druid-24.0.2/log/coordinator-overlord.log \
   | grep DEBUG \
   | tail -n 1
 ```

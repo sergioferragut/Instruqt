@@ -28,8 +28,8 @@ timelimit: 600
 Use the following command to get the Druid 24.0 release.
 
 ```
-wget https://ftp.wayne.edu/apache/druid/24.0.0/apache-druid-24.0.0-bin.tar.gz
-tar -xzf apache-druid-24.0.0-bin.tar.gz
+wget https://dlcdn.apache.org/druid/24.0.2/apache-druid-24.0.2-bin.tar.gz
+tar -xzf apache-druid-24.0.2-bin.tar.gz
 ```
 
 <h2 style="color:cyan">Step 2</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -38,7 +38,7 @@ Modify the MiddleManager properties file to increase resources.
 
 ```
 sed -i 's/druid.worker.capacity=2/druid.worker.capacity=4/g' \
-  /root/apache-druid-24.0.0/conf/druid/single-server/nano-quickstart/middleManager/runtime.properties
+  /root/apache-druid-24.0.2/conf/druid/single-server/nano-quickstart/middleManager/runtime.properties
 echo -e "# Set this property to the maximum number of tasks per job plus 25.\n\
 # The upper limit for tasks per job is 1000, so 1000 + 25.\n\
 # Set this lower if you do not intend to use this many tasks.\n\
@@ -47,7 +47,7 @@ druid.indexer.fork.property.druid.server.http.numThreads=1025\n\
 # Lazy initialization of the connection pool that was used for shuffle.\n\
 druid.global.http.numConnections=50\n\
 druid.global.http.eagerInitialization=false" \
-  >> /root/apache-druid-24.0.0/conf/druid/single-server/nano-quickstart/middleManager/runtime.properties
+  >> /root/apache-druid-24.0.2/conf/druid/single-server/nano-quickstart/middleManager/runtime.properties
 ```
 
 <h2 style="color:cyan">Step 3</h2><hr style="color:cyan;background-color:cyan;height:2px">
@@ -55,7 +55,7 @@ druid.global.http.eagerInitialization=false" \
 Start Druid in the background.
 
 ```
-/root/apache-druid-24.0.0/bin/supervise -c /root/apache-druid-24.0.0/conf/supervise/single-server/nano-quickstart.conf > druid.log &
+/root/apache-druid-24.0.2/bin/supervise -c /root/apache-druid-24.0.2/conf/supervise/single-server/nano-quickstart.conf > druid.log &
 ```
 
 <h2 style="color:cyan">Step 4</h2><hr style="color:cyan;background-color:cyan;height:2px">

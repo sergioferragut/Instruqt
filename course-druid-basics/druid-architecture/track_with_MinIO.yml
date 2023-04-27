@@ -272,7 +272,7 @@ challenges:
     Download the Druid distibution.
 
     ```
-    wget https://ftp.wayne.edu/apache/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
+    wget https://dlcdn.apache.org/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
 
     ```
 
@@ -378,7 +378,7 @@ challenges:
     Download the Druid distibution.
 
     ```
-    wget https://ftp.wayne.edu/apache/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
+    wget https://dlcdn.apache.org/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
     ```
 
     Unzip the downloaded file and move into the resulting directory.
@@ -444,7 +444,7 @@ challenges:
     Download the Druid distibution.
 
     ```
-    wget https://ftp.wayne.edu/apache/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
+    wget https://dlcdn.apache.org/druid/25.0.0/apache-druid-25.0.0-bin.tar.gz
     ```
 
     Unzip the downloaded file and move into the resulting directory.

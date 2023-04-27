@@ -59,7 +59,7 @@ Let's look at the end of the middle manager log to see what might be happening.
 Switch to the _Tail Shell_ tab and run this command.
 
 ```
-tail -f /root/apache-druid-24.0.0/log/middleManager.log
+tail -f /root/apache-druid-24.0.2/log/middleManager.log
 ```
 
 We see lots of messages about a ZooKeeper client not being able to connect.

@@ -186,7 +186,7 @@ So back in the _Shell_ tab, start Druid using the following commands.
 
 
 ```
-nohup /root/apache-druid-24.0.0/bin/start-nano-quickstart \
+nohup /root/apache-druid-24.0.2/bin/start-nano-quickstart \
   > /root/log.out 2> /root/log.err \
   < /dev/null & disown
 while [ $(curl localhost:8888/ 2>&1 >/dev/null | grep Fail | wc -w) -gt 0 ]
@@ -202,7 +202,7 @@ We can use the process logs to verify our changes were applied.
 Lets use _less_ to review the Broker log.
 
 ```
-less /root/apache-druid-24.0.0/log/broker.log
+less /root/apache-druid-24.0.2/log/broker.log
 ```
 
 <h2 style="color:cyan">Step 11</h2><hr style="color:cyan;background-color:cyan;height:5px">
@@ -223,7 +223,7 @@ As processes start, the main thread reports the configuration it has applied as 
 Let’s open the historical log so we can see the S3 configurations.
 
 ```
-less /root/apache-druid-24.0.0/log/historical.log
+less /root/apache-druid-24.0.2/log/historical.log
 ```
 
 <h2 style="color:cyan">Step 14</h2><hr style="color:cyan;background-color:cyan;height:5px">
@@ -268,7 +268,7 @@ curl  -H'Content-Type: application/json' http://localhost:8888/druid/indexer/v1/
 Let's look briefly at the Middle Manager log.
 
 ```
-less /root/apache-druid-24.0.0/log/middleManager.log
+less /root/apache-druid-24.0.2/log/middleManager.log
 ```
 
 <h2 style="color:cyan">Step 18</h2><hr style="color:cyan;background-color:cyan;height:5px">

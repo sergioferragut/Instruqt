@@ -206,12 +206,12 @@ Your ingestion spec is now complete, so switch back to the Shell tab.
 Use the following command to ingest the data.
 
 ```
-/root/apache-druid-0.21.1/bin/post-index-task \
+/root/apache-druid-24.0.2/bin/post-index-task \
   --file /root/ingestion-spec.json \
   --url http://localhost:8081
 ```
 
-<p><span style="color:cyan"><strong><em>NOTE: </em></strong></span><i>If the ingestion fails, you can use the editor to review the log files in the folder here: /root/apache-druid-0.21.1/var/druid/indexing-logs/.
+<p><span style="color:cyan"><strong><em>NOTE: </em></strong></span><i>If the ingestion fails, you can use the editor to review the log files in the folder here: /root/apache-druid-24.0.2/var/druid/indexing-logs/.
 </i></p>
 
 <p><span style="color:cyan"><strong><em>NOTE: </em></strong></span> <i>This command sends a request to the Overlord API.
