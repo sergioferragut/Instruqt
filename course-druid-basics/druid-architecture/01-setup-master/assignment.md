@@ -228,7 +228,7 @@ tail /root/apache-druid-25.0.0/log/coordinator-overlord.log
 and here:
 
 ```
-tail /root/apache-druid-25.0.0/log/zk.log
+tail /root/apache-druid-25.0.0/log/zookeeper.log
 ```
 
 <h2 style="color:cyan">Great! You have deployed the master server.</h2>
