@@ -6,3 +6,4 @@ docker/google-cloud-sdk
 **/*.pptx
 **/*.png
 **/*.pdf
+.idea
