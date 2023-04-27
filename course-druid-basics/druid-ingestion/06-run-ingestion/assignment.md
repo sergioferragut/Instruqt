@@ -25,7 +25,7 @@ Now that the ingestion spec is ready, let's ingest some data!
 Here's the command to submit the ingestion spec to Druid.
 
 ```
-/root/apache-druid-25.0.0/bin/post-index-task \
+/root/apache-druid-0.21.1/bin/post-index-task \
   --file /root/ingestion-spec.json \
   --url http://localhost:8081
 ```
@@ -57,7 +57,7 @@ This field tells you how many total rows are in the wikipedia table.
 Compare the number of rows in the table to the number of rows in the input file.
 
 ```
-wc -l /root/apache-druid-25.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
+wc -l /root/apache-druid-0.21.1/quickstart/tutorial/wikiticker-2015-09-12-sampled.json
 ```
 
 <details>
@@ -78,7 +78,7 @@ To investigate this further, look at these records from the input file that are 
 
 ```
 grep Diannaa \
-  /root/apache-druid-25.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | \
+  /root/apache-druid-0.21.1/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | \
   grep "2015-09-12T20:" | \
   jq '"****************","user: "+.user,"added: "+(.added|tostring),"deleted: "+(.deleted|tostring),"delta: "+(.delta|tostring)'
 ```

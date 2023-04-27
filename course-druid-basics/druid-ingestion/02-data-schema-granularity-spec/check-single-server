@@ -25,7 +25,7 @@ read -r -d '' VAR <<- EOM
             "type": "index_parallel",
             "inputSource": {
                 "type": "local",
-                "baseDir": "/root/apache-druid-25.0.0/quickstart/tutorial/",
+                "baseDir": "/root/apache-druid-0.21.1/quickstart/tutorial/",
                 "filter": "wikiticker-2015-09-12-sampled.json"
             },
             "inputFormat": {

@@ -27,7 +27,7 @@ Metrics columns allow us to do [_rollups_](https://druid.apache.org/docs/latest/
 Let's take another look at an example record in the input data.
 
 ```
-head --lines 1 /root/apache-druid-25.0.0/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | jq
+head --lines 1 /root/apache-druid-0.21.1/quickstart/tutorial/wikiticker-2015-09-12-sampled.json | jq
 ```
 
 We'll use three columns as metrics: _added_, _deleted_ and _delta_.
