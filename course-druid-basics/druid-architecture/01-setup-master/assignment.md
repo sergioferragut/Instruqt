@@ -222,13 +222,13 @@ curl master-server:8081/status/properties | jq | grep druid.host
 You can find the log files for these processes here:
 
 ```
-tail /root/apache-druid-25.0.0/var/sv/coordinator-overlord.log
+tail /root/apache-druid-25.0.0/log/coordinator-overlord.log
 ```
 
 and here:
 
 ```
-tail /root/apache-druid-25.0.0/var/sv/zk.log
+tail /root/apache-druid-25.0.0/log/zk.log
 ```
 
 <h2 style="color:cyan">Great! You have deployed the master server.</h2>

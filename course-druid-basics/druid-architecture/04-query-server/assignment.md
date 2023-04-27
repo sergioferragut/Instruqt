@@ -136,13 +136,13 @@ ps -ef | grep "openjdk\-[8-8]" | awk 'NF{print $NF}'
 You can find the log files for these processes here:
 
 ```
-tail /root/apache-druid-25.0.0/var/sv/broker.log
+tail /root/apache-druid-25.0.0/log/broker.log
 ```
 
 and here:
 
 ```
-tail /root/apache-druid-25.0.0/var/sv/router.log
+tail /root/apache-druid-25.0.0/log/router.log
 ```
 
 <h2 style="color:cyan">Wonderful! You have deployed the query server.</h2>

@@ -135,13 +135,13 @@ ps -ef | grep "openjdk\-[8-8]" | awk 'NF{print $NF}'
 You can find the log files for these processes here:
 
 ```
-tail /root/apache-druid-25.0.0/var/sv/historical.log
+tail /root/apache-druid-25.0.0/log/historical.log
 ```
 
 and here:
 
 ```
-tail /root/apache-druid-25.0.0/var/sv/middleManager.log
+tail /root/apache-druid-25.0.0/log/middleManager.log
 ```
 
 <h2 style="color:cyan">Cool! You have deployed the first data server.</h2>
