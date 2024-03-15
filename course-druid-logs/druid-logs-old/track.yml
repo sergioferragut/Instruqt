@@ -16,3 +16,7 @@ private: true
 published: true
 show_timer: true
 checksum: "9035453948170869617"
+lab_config:
+  overlay: false
+  width: 33
+  position: right

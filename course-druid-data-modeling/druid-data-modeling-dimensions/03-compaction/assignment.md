@@ -35,7 +35,7 @@ Switch to the editor tab and look at the ingestion spec (ingestion-spec.json) to
 Once you have reviewed the ingestion spec, switch back to the shell and ingest the data using the following command.
 
 ```
-/root/apache-druid-24.0.2/bin/post-index-task \
+/root/apache-druid-0.21.1/bin/post-index-task \
   --file /root/ingestion-spec.json \
   --url http://localhost:8081
 ```
@@ -105,7 +105,7 @@ Back in the shell, perform the compaction.
 
 
 ```
-/root/apache-druid-24.0.2/bin/post-index-task \
+/root/apache-druid-0.21.1/bin/post-index-task \
   --file /root/compaction-spec.json \
   --url http://localhost:8081
 # now wait for new segments to load
@@ -116,7 +116,7 @@ until curl localhost:8888/druid/coordinator/v1/datasources/process-data/loadstat
   done
 ```
 
-<p><span style="color:cyan"><strong><em>NOTE: </em></strong></span><i>If the ingestion fails, you can use the editor to review the log files in the folder here: /root/apache-druid-24.0.2/var/druid/indexing-logs/.
+<p><span style="color:cyan"><strong><em>NOTE: </em></strong></span><i>If the ingestion fails, you can use the editor to review the log files in the folder here: /root/apache-druid-0.21.1/var/druid/indexing-logs/.
 </i></p>
 
 <h2 style="color:cyan">Step 8</h2><hr style="color:cyan;background-color:cyan;height:5px">

@@ -13,7 +13,12 @@ owner: imply
 developers:
 - steve.halladay@imply.io
 - peter.marshall@imply.io
+- sergio.ferragut@imply.io
 show_timer: true
 skipping_enabled: true
-checksum: "11623647384089749239"
 idle_timeout: 600
+lab_config:
+  overlay: false
+  width: 25
+  position: right
+checksum: "6639083808329532142"

@@ -10,6 +10,11 @@ tags: []
 owner: imply
 developers:
 - steve.halladay@imply.io
+- sergio.ferragut@imply.io
 show_timer: true
-checksum: "640429880994749436"
 idle_timeout: 600
+lab_config:
+  overlay: false
+  width: 33
+  position: right
+checksum: "4032125005157373246"

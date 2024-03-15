@@ -139,7 +139,7 @@ Save the file by clicking the _save_ icon.
 
 We need to enable sketches as an extension to Druid in the common runtime properties file.
 
-Open the file: <i>/root/apache-druid-24.0.2/conf/druid/cluster/_common/common.runtime.properties</i>.
+Open the file: <i>/root/apache-druid-0.21.1/conf/druid/cluster/_common/common.runtime.properties</i>.
 Verify that _druid-datasketches_ is included in the list of extension (near or at line 27).
 
 <a href="#img-4">
@@ -175,7 +175,7 @@ curl -XPOST \
   | jq
 ```
 
-<p><span style="color:cyan"><strong><em>NOTE: </em></strong></span><i>If the ingestion fails, you can use the editor to review the log files in the folder here: /root/apache-druid-24.0.2/var/druid/indexing-logs/.
+<p><span style="color:cyan"><strong><em>NOTE: </em></strong></span><i>If the ingestion fails, you can use the editor to review the log files in the folder here: /root/apache-druid-0.21.1/var/druid/indexing-logs/.
 </i></p>
 
 <h2 style="color:cyan">Step 12</h2><hr style="color:cyan;background-color:cyan;height:5px">

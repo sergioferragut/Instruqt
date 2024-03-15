@@ -120,7 +120,7 @@ Save the file.
 Back in the shell, ingest the data using the following command.
 
 ```
-/root/apache-druid-24.0.2/bin/post-index-task \
+/root/apache-druid-0.21.1/bin/post-index-task \
   --file /root/ingestion-spec.json \
   --url http://localhost:8081
 # now wait for new segments to load

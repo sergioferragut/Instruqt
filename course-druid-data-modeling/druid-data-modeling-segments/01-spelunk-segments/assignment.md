@@ -52,12 +52,12 @@ We've already created the ingestion spec for you (feel free to check it out in t
 Use the following command to ingest the data.
 
 ```
-/root/apache-druid-24.0.2/bin/post-index-task \
+/root/apache-druid-0.21.1/bin/post-index-task \
   --file /root/ingestion-spec.json \
   --url http://localhost:8081
 ```
 
-<p><span style="color:cyan"><strong><em>NOTE: </em></strong></span><i>If the ingestion fails, you can use the editor to review the log files in the folder here: /root/apache-druid-24.0.2/var/druid/indexing-logs/.
+<p><span style="color:cyan"><strong><em>NOTE: </em></strong></span><i>If the ingestion fails, you can use the editor to review the log files in the folder here: /root/apache-druid-0.21.1/var/druid/indexing-logs/.
 </i></p>
 
 <h2 style="color:cyan">Step 3</h2><hr style="color:cyan;background-color:cyan;height:5px">
@@ -81,7 +81,7 @@ Now, let's look at where Druid stores the segment files.
 Change directories with the following command.
 
 ```
-cd /root/apache-druid-24.0.2/var/druid/segments/process-data
+cd /root/apache-druid-0.21.1/var/druid/segments/process-data
 ```
 
 <h2 style="color:cyan">Step 5</h2><hr style="color:cyan;background-color:cyan;height:5px">
@@ -116,7 +116,7 @@ Recall that after ingestion writes the segments to deep storage, the historicals
 Let's change directories to the segment cache.
 
 ```
-cd /root/apache-druid-24.0.2/var/druid/segment-cache/process-data/
+cd /root/apache-druid-0.21.1/var/druid/segment-cache/process-data/
 ```
 
 <h2 style="color:cyan">Step 7</h2><hr style="color:cyan;background-color:cyan;height:5px">
